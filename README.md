@@ -56,7 +56,7 @@ For more details about the available options and formats, refer to the [Konbert 
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please create a new issue or submit a pull request on the [GitHub repository](https://github.com/your/repository).
+Contributions are welcome! If you find any issues or have suggestions for improvements, please create a new issue or submit a pull request.
 
 ## License
 
