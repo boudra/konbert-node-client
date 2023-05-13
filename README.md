@@ -20,7 +20,6 @@ import Konbert from 'konbert-api';
 // Set up the API options
 const options = {
   apiKey: 'YOUR_API_KEY',
-  host: 'https://konbert.com',
 };
 
 // Create an instance of Konbert
