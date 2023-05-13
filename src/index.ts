@@ -52,6 +52,11 @@ type ConversionResponse = {
   message: string;
 };
 
+type HTTPInput = {
+  url: string;
+  headers: Record<string, string>;
+};
+
 export default class Konbert {
   private apiKey: string;
   private endpoint: string;
@@ -62,7 +67,7 @@ export default class Konbert {
   }
 
   async convert(
-    inputData: string | Buffer | Blob,
+    inputData: string | Buffer | Blob | HTTPInput,
     input: InputOptions,
     output: OutputOptions
   ): Promise<Blob> {
@@ -74,7 +79,18 @@ export default class Konbert {
 
     const body = new FormData();
 
-    body.append("input[data]", new Blob([inputData]));
+    if (
+      inputData instanceof Blob ||
+      inputData instanceof Buffer ||
+      typeof inputData === "string"
+    ) {
+      body.append("input[data]", new Blob([inputData]));
+    } else {
+      body.append("input[http][url]", inputData.url);
+      for (const [key, value] of Object.entries(inputData.headers)) {
+        body.append(`input[http][headers][${key}]`, value.toString());
+      }
+    }
 
     if (typeof input === "string") {
       body.append("input[format]", input);
