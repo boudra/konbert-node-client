@@ -54,7 +54,7 @@ type ConversionResponse = {
 
 type HTTPInput = {
   url: string;
-  headers: Record<string, string>;
+  headers?: Record<string, string>;
 };
 
 export default class Konbert {
@@ -87,8 +87,10 @@ export default class Konbert {
       body.append("input[data]", new Blob([inputData]));
     } else {
       body.append("input[http][url]", inputData.url);
-      for (const [key, value] of Object.entries(inputData.headers)) {
-        body.append(`input[http][headers][${key}]`, value.toString());
+      if (inputData.headers) {
+        for (const [key, value] of Object.entries(inputData.headers)) {
+          body.append(`input[http][headers][${key}]`, value.toString());
+        }
       }
     }
 
