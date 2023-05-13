@@ -1,0 +1,34 @@
+{
+  "name": "konbert-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boudra/konbert-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boudra/konbert-api/issues"
+  },
+  "homepage": "https://github.com/boudra/konbert-api#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.1",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.1.4",
+    "prettier": "^2.8.8"
+  }
+}
