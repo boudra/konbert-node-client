@@ -15,37 +15,39 @@ npm install konbert-api
 Here's an example of how to use Konbert to convert files:
 
 ```typescript
-import Konbert from 'konbert-api';
+import Konbert from "../src/index.js";
 
-// Set up the API options
-const options = {
-  apiKey: 'YOUR_API_KEY',
-};
+// Example Usage
+const apiKey = "YOUR_API_KEY";
+const konbert = new Konbert({ apiKey });
 
-// Create an instance of Konbert
-const konbert = new Konbert(options);
+const data = JSON.stringify([
+  {
+    name: "John Doe",
+    age: 30,
+    city: "New York",
+  },
+  {
+    name: "Jane Doe",
+    age: 25,
+    city: "San Francisco",
+  },
+]);
 
-// Specify the input and output formats
-const input = 'csv';
-const output = 'json';
+try {
+  const result = await konbert.convert(data, "json", "csv");
 
-// Call the convert method to perform the conversion
-konbert.convert(inputData, input, output)
-  .then((outputData) => {
-    // Handle the converted file data
-    // e.g., save the outputData to a file
-  })
-  .catch((error) => {
-    // Handle any errors that occur during conversion
-    console.error('Conversion failed:', error);
-  });
+  console.log("Conversion successful:", result.toString());
+} catch (error) {
+  console.log("Conversion failed. Error:", error);
+}
 ```
 
 Make sure to replace `'YOUR_API_KEY'` with your actual API key.
 
 The `convert` method accepts the following parameters:
 
-- `inputData`: The input data to be converted. It can be a string, Buffer, Blob, or an HTTPInput object containing the URL and headers.
+- `data`: The input data to be converted. It can be a string, Buffer, Blob, or an HTTPInput object containing the URL and headers.
 - `input`: The input format. It can be one of the following: `'csv'`, `'json'`, `'avro'`, or `'excel'`. You can also provide additional options specific to the input format.
 - `output`: The output format. It can be one of the following: `'csv'`, `'json'`, `'avro'`, or `'excel'`. You can also provide additional options specific to the output format.
 
