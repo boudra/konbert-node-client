@@ -15,10 +15,10 @@ npm install konbert-api
 Here's an example of how to use Konbert to convert files:
 
 ```typescript
-import Konbert, { Options } from 'konbert-api';
+import Konbert from 'konbert-api';
 
 // Set up the API options
-const options: Options = {
+const options = {
   apiKey: 'YOUR_API_KEY',
   host: 'https://konbert.com',
 };
