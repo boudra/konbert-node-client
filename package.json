@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "directories": {
-    "src": "src",
-    "test": "test"
+    "src": "src"
   },
   "scripts": {
     "build": "tsc",
